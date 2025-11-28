@@ -1,17 +1,12 @@
 import { z } from "zod";
 
 export namespace ProjectModel {
-  export const projectBody = z.object({
-    name: z.string().max(250),
-  });
+  export const projectListResponse = z.array(
+    z.object({
+      id: z.uuid(),
+      name: z.string(),
+    }),
+  );
 
-  export type projectBody = z.infer<typeof projectBody>;
-
-  export const projectResponse = z.object({
-    projectId: z.uuid(),
-  });
-
-  export type projectResponse = z.infer<typeof projectResponse>;
-
-  // export type signInInvalid = typeof signInInvalid.static;
+  export type projectListResponse = z.infer<typeof projectListResponse>;
 }

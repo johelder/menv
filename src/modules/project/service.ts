@@ -1,9 +1,10 @@
-import { status } from "elysia";
-
-import type { ProjectModel } from "./model";
+import { db } from "@/database/client";
+import { schema } from "@/database/schema";
+import { ProjectModel } from "./model";
 
 export abstract class Project {
-  static async create({ name }: ProjectModel.projectBody) {
-    return {};
+  static async list() {
+    const projects = await db.select().from(schema.projects);
+    return projects;
   }
 }
