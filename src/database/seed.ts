@@ -6,3 +6,4 @@ await db
   .values([{ name: "Orbit" }, { name: "Sirius" }, { name: "Nova" }]);
 
 console.log(`Seeding complete.`);
+process.exit(0);
