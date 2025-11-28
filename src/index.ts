@@ -1,7 +1,13 @@
+import openapi from "@elysiajs/openapi";
 import { Elysia } from "elysia";
 
-const app = new Elysia().get("/", () => "Hello Elysia").listen(3000);
+new Elysia({
+  prefix: "v1",
+})
+  .use(openapi())
+  .get("/", () => "Hello Elysia")
+  .get("/users", () => "Get users")
+  .listen(3333);
 
-console.log(
-  `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`
-);
+console.log("🦊 Server is running at http://localhost:3333/v1");
+console.log("📚 Docs is available at http://localhost:3333/v1/openapi");
